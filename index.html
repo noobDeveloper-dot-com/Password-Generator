@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+</head>
+<body>
+
+    <section class="mainWrapper">
+        <h1 class="appName">Password Generator</h1>
+        <section class="GenerateNewPassword">
+            <input type="text" name="new_Password" id="new_Password">
+            <button class="copy_Password">CP</button>
+        </section>
+
+        <section class="settings">
+           <section class="characterLength grid">
+            <label for="character-length">Character Length</label>
+            <div class="length">10</div>
+            <input type="range" name="character-length" id="character-length">
+           </section> 
+
+           <section class="conditions-checkboxes">
+            <div class="_condition">
+                <input type="checkbox" name="upperCaseLetters" id="upperCaseLetters"><label for="upperCaseLetters">Include Uppercase Letters</label>
+                <input type="checkbox" name="lowerCaseLetters" id="lowerCaseLetters"><label for="lowerCaseLetters">Include Lowercase Letters</label>
+                <input type="checkbox" name="numbers" id="numbers"><label for="numbers">Include Numbers</label>
+                <input type="checkbox" name="symbols" id="symbols"><label for="symbols">Include Symbols</label>
+            </div>
+           </section>
+
+           <section class="passwordStrengthIndicator">
+            <p>STRENGHT</p>
+            <div class="_indicator">
+                <div class="displayStrength" id="displayStrength">MEDIUM</div>
+                <div class="bars">
+                <div class="_bar"></div>
+                <div class="_bar"></div>
+                <div class="_bar"></div>
+                <div class="_bar"></div>
+            </div>
+            </div>
+           </section>
+
+           <button class="generateBtn" id="generateBtn">GENERATE</button>
+        </section>
+    </section>
+    
+</body>
+</html>
