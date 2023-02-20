@@ -5,21 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Generator</title>
+
+    <!-- Link to CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="grid">
 
     <section class="mainWrapper">
         <h1 class="appName">Password Generator</h1>
         <section class="GenerateNewPassword">
             <input type="text" name="new_Password" id="new_Password">
-            <button class="copy_Password">CP</button>
+            <button class="copy_Password">copy</button>
         </section>
 
         <section class="settings">
            <section class="characterLength grid">
             <label for="character-length">Character Length</label>
             <div class="length">10</div>
-            <input type="range" name="character-length" id="character-length">
+            <input type="range" name="character-length-slider" id="character-length-slider" class="character-length-slider">
            </section> 
 
            <section class="conditions-checkboxes">
