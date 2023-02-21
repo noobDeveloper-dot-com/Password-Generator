@@ -8,20 +8,151 @@
     text-decoration: none;
 }
 
-body{
-    place-content: center;
-    height: 100vh;
+:root{
+    --mainBgColor:#0d0d0d;
+    --grey:rgb(162, 162, 162);
+    --transparent_grey:rgba(54, 54, 54, 0.425);
+    --settings_fontCol:rgb(255, 255, 255);
+    --borderRadius:.5em;
 }
 
-.mainWrapper{
-    border: 1px solid red;
+.flexB{
+    display: flex;
 }
 
 .grid{
     display: grid;
 }
 
+body{
+    place-content: center;
+    height: 100vh;
+    background-color: var(--mainBgColor);
+    font-family: 'Chakra Petch', sans-serif;
+}
+
+
+
+.mainWrapper{
+    --gap:1em;
+    gap: var(--gap) ;
+    width: 80vw;
+    max-width: 400px;
+}
+
+.appName{
+    color:var(--grey);
+    font-size: 1rem;
+    text-align: center;
+}
+
+.generateNewPassword-section{
+    justify-content: space-around;
+    background-color: var(--transparent_grey);
+    padding: .5em .4em;
+    border-radius: var(--borderRadius);
+}
+
+/* Textbox */
+.generateNewPassword-section #new_Password{
+    background-color: transparent;
+    border: none;
+    width: 95%;
+    outline: none;
+    color: rgba(196, 196, 196, 0.341);
+    font-weight: bold;
+}
+
+/* the copy button */
+.copy_Password{
+    --width:1.5rem;
+    --height:1.5rem;
+    background-color: transparent;
+    border: none;
+    width: var(--width);
+    height: var(--height);
+}
+
+.copyIcon{
+    fill: rgb(4, 217, 4);
+    width: var(--width);
+    height: var(--height);
+}
+
+.settings{
+    background-color: var(--transparent_grey);
+    border-radius: var(--borderRadius);
+    color: var(--settings_fontCol);
+    padding: .8em;
+    gap: var(--gap);
+}
+
+.characterLength-section{
+    grid-template-columns: 3fr 1fr ;
+    gap: calc(var(--gap) - .5em);
+}
+
+
+.characterLength-section .length{
+    text-align: right;
+}
+
+
 /* Password Length Slider */
-.character-length-slider{
+.characterLength-section .character-length-slider{
+    cursor: pointer;
+    grid-column: 1/3;
+}
+
+
+._condition{
+  gap: .5em;
+}
+
+._condition :is([type="checkbox"], label){
     cursor: pointer;
 }
+
+/* Custom Checkbox */
+
+/* ._condition label{
+    display: flex;
+    border: 1px solid blue;
+}
+
+._condition label::before{
+    content: "";
+
+    width: 1em;
+    height: 1em;
+    border: 1px solid red;;
+} */
+
+.passwordStrengthIndicator-section{
+    --gap:.5em;
+    background-color: var(--mainBgColor);
+    padding: .5em 1em;
+    justify-content: space-between;
+}
+
+
+
+:is(._indicator, .bars){
+    gap: var(--gap);
+}
+
+
+/* Individual Bars */
+.bars ._bar{
+    border: 1px solid #fff;
+    width: .5em;
+}
+
+
+.generateBtn{
+    padding: .7em 0;
+}
+
+
+
+
