@@ -71,12 +71,25 @@ body{
     border: none;
     width: var(--width);
     height: var(--height);
+
+    /* Animation duration for copy button to fade when all options are not ticked */
+    transition: 500ms;
+}
+
+.copy_Password:hover{
+    cursor: pointer;
 }
 
 .copyIcon{
     fill: rgb(4, 217, 4);
     width: var(--width);
     height: var(--height);
+    
+}
+/* disable the clicks on the copy button and fades away when no options are ticked */
+.disable_btn{
+    pointer-events: none;
+    opacity: 15%;
 }
 
 .settings{
@@ -152,6 +165,9 @@ body{
 .generateBtn{
     padding: .7em 0;
 }
+
+
+
 
 
 
