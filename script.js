@@ -50,7 +50,7 @@ const SETTINGS = (function(){
     //This block of code is design to push random alphabet letters to the "RANDOM_VALUE_STORE array"
     //First it loops according to the value of "character_length"
     for(let i = 0; i < character_length; i++){
-      const RANDOM_NUMBER = Math.floor(Math.random() * 26) // Generates a random number between 0 and 25
+      const RANDOM_NUMBER = Math.floor(Math.random() * 26) // Generates a random number between 0 - 25
 
 
 
@@ -66,7 +66,7 @@ const SETTINGS = (function(){
       }
       // if user ticked the numbers checkbox
       if(numbers_is_checked){
-        RANDOM_VALUE_STORE.push(Math.floor(Math.random() * 10))
+        RANDOM_VALUE_STORE.push(Math.floor(Math.random() * 10))// Generates a random number between 0 - 9 and adds to RANDOM_VALUE_STORE array.
       }
       
       // if user ticked the symbols checkbox
@@ -109,6 +109,58 @@ const SETTINGS = (function(){
    }
 
 
+
+   //This conditional statement checks the strength of the password
+
+   const DISPLAY_STRENGTH = document.querySelector("#displayStrength");
+   const BARS = document.querySelectorAll("#_bar")
+
+   if(PASSWORD_ARRAY.length < 7){
+    DISPLAY_STRENGTH.innerText = "WEAK"
+    BARS[0].style.backgroundColor = "red"
+
+    // Remove the bgColor from the bar
+    for(let i = 1; i < BARS.length; i++){
+      BARS[i].style.backgroundColor = ""
+    }
+   }
+   else if(PASSWORD_ARRAY.length < 12){
+    DISPLAY_STRENGTH.innerText = "MEDIUM"
+    
+    // Add bgColor to the bar
+    for(let i = 0; i < 2; i++){
+      BARS[i].style.backgroundColor = "orange"
+   }
+
+  //  Remove the bgColor from the bar
+  for(let i = 2; i < BARS.length; i++){
+    BARS[i].style.backgroundColor = ""
+  }
+}
+   else if(PASSWORD_ARRAY.length < 22){
+    DISPLAY_STRENGTH.innerText = "STRONG"
+
+    // Add bgColor to the bar
+    for(let i = 0; i < 3; i++){
+      BARS[i].style.backgroundColor = "green"
+    }
+
+    // Remove the bgColor from the bar
+    for(let i = 3; i < BARS.length; i++){
+      BARS[i].style.backgroundColor = ""
+    }
+
+   }
+   else{
+    DISPLAY_STRENGTH.innerText = "ELITE"
+
+    // Add bgColor to the bar
+    for(let i = 0; i < 4; i++){
+      BARS[i].style.backgroundColor = "blue"
+    }
+   }
+
+
   }
 
   // This returns an object with two methods: 
@@ -120,15 +172,15 @@ const SETTINGS = (function(){
 })()
 
 
-
+// Event callback function for the slider
 function moveSlider(){
     SETTINGS.display_Value_Of_Slider()
 }
 
 
 
-
-function generate_Password_To_Textbox(){
+// Event callback function for the Generate button
+function generate_Password_To_Textbox(){ 
     
     // Passes all the values of the checkbox to the method "generatePassword"
     const UPPERCASE_IS_CHECKED = document.querySelector("#upperCaseLetters").checked
