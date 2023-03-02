@@ -4,15 +4,16 @@
 const TEXTBOX = document.querySelector("#new_Password");
 const COPY_BTN = document.querySelector("#copy_Password")
 const CHARACTER_LENGTH_SLIDER = document.querySelector("#character-length-slider")
-const CONDITIONS = document.querySelector("#conditions-checkboxes")
+const CHECKBOXES = document.querySelectorAll("input[type='checkbox']")
 const GENERATE_BTN = document.querySelector("#generateBtn")
-const log = console.log;
+
 
 // Events---------------------------------------------------------
 
 COPY_BTN.addEventListener("click", copyText);
 CHARACTER_LENGTH_SLIDER.addEventListener("input", moveSlider);
 GENERATE_BTN.addEventListener("click", generate_Password_To_Textbox)
+CHECKBOXES.forEach((checbox) => checbox.addEventListener("click", disableOneChecbox));
 
 
 
@@ -25,6 +26,10 @@ function copyText(ev){
 }
 
 
+
+
+
+
 // This creates a self-invoking anonymous function 
 //that returns an object with two methods:
 // display_Value_Of_Slider and generatePassword
@@ -33,7 +38,7 @@ const SETTINGS = (function(){
   
   // This variable is defined within the scope of the anonymous function
   // and is not accessible outside of it
-  let character_length;
+  let character_length
 
   function display_Value_Of_Slider(){
     let character_length_display = document.querySelector("#display_character_length")
@@ -82,33 +87,23 @@ const SETTINGS = (function(){
     // we need to shorten the characters according the value of "character_length"
     const PASSWORD_ARRAY = RANDOM_VALUE_STORE.splice(0, character_length)
    
-    //The PASSWORD_ARRAY length can be zero if user havent ticked any options.
-    // if that happens, we need to display the message as "Tick atleast one option"
-    // And we should disable the copy button
-    
 
-
-    //if "PASSWORD_ARRAY" length is more that zero
-   if(PASSWORD_ARRAY.length > 0){
-     
-     // Joins the letters in the PASSWORD_STORE array into a string and displays it in the textbox
-     TEXTBOX.value = PASSWORD_ARRAY.join("")
+    // if character_length is more than 0
+   if(character_length > 0){
       
-    //  Enable the copy button
-      COPY_BTN.classList.remove("disable_btn")
+    // Joins the letters in the PASSWORD_STORE array into a string and displays it in the textbox
+     TEXTBOX.value = PASSWORD_ARRAY.join("")
 
-
-   //if the length is less than zero   
+    //Enable copy button if character_length is greater than 0
+     COPY_BTN.classList.remove("disable_btn")
    }else{
+    // else if character_length is 0
+    // Display message to the textbox
+    TEXTBOX.value = "Ensure the Character Length is not 0"
 
-    // Disable the copy button
+  // Disables the copy button
     COPY_BTN.classList.add("disable_btn")
-
-    // Display the message on the textbox if non of the options are ticked
-    TEXTBOX.value = "Tick atleast one option"
    }
-
-
 
    //This conditional statement checks the strength of the password
 
@@ -176,6 +171,29 @@ const SETTINGS = (function(){
 function moveSlider(){
     SETTINGS.display_Value_Of_Slider()
 }
+
+
+function disableOneChecbox(ev){
+
+  // Select all checked checkboxes on the page
+  const CHECKED_CHECKBOXES = document.querySelectorAll('input[type="checkbox"]:checked')
+
+ // If no checkboxes are checked and the current checkbox is being unchecked, prevent it from becoming unchecked
+  if(CHECKED_CHECKBOXES.length === 0 && !this.checked){
+
+    //the recent checkbox which you unchecked will be checked again
+    this.checked = true;
+  }
+}
+
+
+
+
+
+
+
+
+
 
 
 

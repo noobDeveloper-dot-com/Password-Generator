@@ -14,6 +14,8 @@
     --transparent_grey:rgba(54, 54, 54, 0.425);
     --settings_fontCol:rgb(255, 255, 255);
     --borderRadius:.5em;
+
+    user-select: none;
 }
 
 .flexB{
